@@ -73,8 +73,16 @@ unsigned int hash(char *str, int max)
  */
 HashTable *create_hash_table(int capacity)
 {
-  HashTable *ht;
-
+  BasicHashTable *ht;
+  ht= malloc(sizeof(BasicHashTable));
+  (*ht).capacity = capacity;
+  (*ht).storage = calloc(capacity, sizeof(Pair *));
+  if(ht != NULL){
+    puts("Hash Table Allocation:(Success)");
+  }else{
+    puts("Hash Table Allocation: (Failure)");
+    exit(1);
+  }
   return ht;
 }
 
